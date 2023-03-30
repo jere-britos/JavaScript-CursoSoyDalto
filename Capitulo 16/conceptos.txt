@@ -1,0 +1,106 @@
+//Memoizer
+Memoization es una técnica de programación en la cual se reduce el tiempo de ejecución de una función a cambio de ampliar el coste del espacio (normalmente en memoria). Es decir, las funciones que han sido memoizadas ganan velocidad al usar un mayor espacio de memoria.
+
+
+//Caché
+	- Definición
+	Trabaja con promesas, y lo que hace el cache genera una memoria a corto 
+	plazo para que no estemos cargando datos a cada rato.
+	
+	- Usos
+	- Almacenar información
+	- Eliminar información
+
+	- Cache.add(request)
+	* Toma una URL, la recupera y la agrega el objeto de respuesta resultante a la caché dada. Esto es funcionalmente al equipo luego de usar put() para agregar los resultados a la caché.
+
+	- Cache.addAll(requests)
+	* Toma una matriz de URL, las recupera y agrega los objetos de respuesta resultantes a la caché dada.
+
+	- Cache.match(request, options)
+	* Devuelve una Promise que se resuelve con la respuesta asociada con la primera solicitud coincidente en el objeto almacenado.
+
+	- Cache.matchAll(request, options)
+	* Devuelve una Promise que se resuelve en una matriz de todas las solicitudes coincidentes en el objeto almacenado.
+
+	- Cache.put(request, options)
+	* Toma tanto una solicitud como su respuesta y la agrega a la caché dada-
+
+	- Cache.delete(request, options)
+	* Encuentra la entrada del objeto cuya clave es la solicitud, devolviendo un Promise que resuelve true si elimina una entrada coincidente. Si no se encuentra ninguna entrada, la promesa se resuelve en false.
+
+	- Cache.key(request, options)
+	* Devuelve un Promise que se resuelve en una matriz de keys de los objetos almacenados.
+
+	PRACTICA
+
+	caches.open("archivos-estaticos");//Abrimos un nuevo objeto cache, se podria considera tmb un almacen de objetos.
+
+	caches.open("archivos-estaticos").then(cache=>{
+	console.log(cache);//Muestra los objetos cache
+	})//Como el cache trabaja con promesas para acceder al contenido hacemos esto
+
+
+//Service Workers
+
+Los Service workers actúan esencialmente como proxy servers asentados entre las aplicaciones web, el navegador y la red (cuando está accesible). Están destinados, entre otras cosas, a permitir la creación de experiencias offline efectivas, interceptando peticiones de red y realizando la acción apropiada si la conexión de red está disponible y hay disponibles contenidos actualizados en el servidor. También permitirán el acceso a notificaciones tipo push y APIs de  sincronización en segundo plano.
+
+ El service worker tiene un ciclo de vida, solo se puede instalar una vez, si lo quieres reinstalar debe ser previamente borrado.
+
+	- ServiceWorker Interfaz
+	- serviceWorker lifeCycle
+	- Registrar un service worker con el método Register()
+	- Enviar mensajes con el método postMessage()
+	- Fetch Event
+	- Registrar Caché y mostrar sitio web offline
+	- Chat Realtime
+
+//Cookies
+
+	- Definicion y usos comunes
+	- Formas de clasificar cookies
+	- Crear una cookie
+		document.cookie = "user=dalto";
+	- Método encodeURlComponent() y decodeURlComponent()
+	- Leer una cookie
+		document.cookie//En la consola
+	- Modificar una cookie
+		se modifica sobreescribiendola igual que cuando la creamos
+	- Borrar una cookie
+		la podemos borrar con un max-age=0, se borra inmediatamente.
+	- Ejemplo de uso (Aviso de uso de cookies, cumplimiento con el RGPD y la ePrivacy)
+
+	formato de cookies
+	COOKIES:		clave=valor;atr;atr;atr;atr;atr
+	Desde el frontend solo se puede acceder al value y al name.
+
+	PRACTICA
+
+	let cookies = document.cookie;
+	console.log(cookies)//Muestra las cookies que tenemos almacenadas
+
+	//Creamos una cookie, "document.cookie tiene que ir a la izq"
+	document.cookie = "user=dalto";
+
+	//Función para crear cookies
+	const crearCookies = (name,exp,path,age)=>{
+	document.cookie = `${name};expires=${exp};path=${path};age=${age}`;	
+	}
+
+	crearCookies("usuario=dalto","Mon 26 Apr 2021 12:00:00 UTC","/")
+	//1 Usuario
+	//2 Fecha en la que expira  Si no se especifica max-age ni expires, la cookie expirará al terminar la sesión actual.
+	//3 Donde va a estar almacenada
+	//4 Duración maxima en segundo "max-age"
+
+
+//Objeto Screen
+	
+	AnchoTotal = screen.width //ancho total de la pantalla
+	AlturaTotal = screen.height //altura total de la pantalla
+
+	AnchoDisponible = screen.availWidth //ancho disponible de la pantalla (barra de tareas consume espacio)
+	AlturaDisponible = screen.availWidth //altura disponible de la pantalla (barra de tareas consume espacio)
+
+	Resolucion = screen.pixelDepth //resolucion de color de la pantalla
+	Profundidad = screen.colorDepth //profundidad de bit de la paleta de colores

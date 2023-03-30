@@ -1,0 +1,4 @@
+{
+	"parteDelCuerpo": "Pies",
+	"parteDeLaCara": "Ojos"
+}

@@ -1,0 +1,1 @@
+setTimeout(()=>alert("funciona el JavaScript"), 2000);
